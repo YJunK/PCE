@@ -1,0 +1,6 @@
+image_size: 64
+disk_radius: 20
+seed: 42
+hole:
+  min_radius: 1
+  max_radius: 10
