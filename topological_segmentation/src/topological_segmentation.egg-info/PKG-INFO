@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: topological-segmentation
+Version: 0.1.0
+Summary: Synthetic and modular topological segmentation research prototype
+Requires-Python: >=3.10
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: scikit-image
+Requires-Dist: gudhi
+Requires-Dist: pyyaml
+Requires-Dist: pytest

@@ -25,8 +25,8 @@ def compute_cubical_persistence(prob_map: np.ndarray, homology_dimensions=(0, 1)
     filtration = probability_filtration(prob_map) # 1 - prob_map to align with sublevel-set convention
 
     cpx = gudhi.CubicalComplex(
-        dimensions=prob_map.shape,
-        top_dimensional_cells=filtration,
+        dimensions=list(prob_map.shape),
+        top_dimensional_cells=filtration.ravel().tolist(),
     )
     persistence = cpx.persistence()
 
