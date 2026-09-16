@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import numpy as np
-import gudhi
+import gudhi # TDA library for computing persistent homology
 
 from .filtrations import probability_filtration
 
@@ -22,7 +22,7 @@ def compute_cubical_persistence(prob_map: np.ndarray, homology_dimensions=(0, 1)
     aligned with the standard sublevel-set convention used by persistent homology.
     """
     prob_map = np.asarray(prob_map, dtype=float)
-    filtration = probability_filtration(prob_map)
+    filtration = probability_filtration(prob_map) # 1 - prob_map to align with sublevel-set convention
 
     cpx = gudhi.CubicalComplex(
         dimensions=prob_map.shape,

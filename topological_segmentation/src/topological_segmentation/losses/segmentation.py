@@ -27,7 +27,7 @@ def dice_score(pred: np.ndarray, target: np.ndarray, eps: float = 1e-8) -> float
 
     intersection = np.sum(pred * target)
     denominator = np.sum(pred) + np.sum(target)
-    return (2.0 * intersection + eps) / (denominator + eps)
+    return (2.0 * intersection + eps) / (denominator + eps) # denominator + eps to avoid division by zero in case both pred and target are empty
 
 
 def dice_loss(pred: np.ndarray, target: np.ndarray, eps: float = 1e-8) -> float:
@@ -48,5 +48,5 @@ def binary_cross_entropy(pred: np.ndarray, target: np.ndarray, eps: float = 1e-8
     """
     pred = np.asarray(pred, dtype=float)
     target = np.asarray(target, dtype=float)
-    pred = np.clip(pred, eps, 1.0 - eps)
-    return -np.mean(target * np.log(pred) + (1.0 - target) * np.log(1.0 - pred))
+    pred = np.clip(pred, eps, 1.0 - eps) # Clip predictions to avoid log(0) and log(1) issues
+    return -np.mean(target * np.log(pred) + (1.0 - target) * np.log(1.0 - pred)) # Compute the mean binary cross-entropy loss across all pixels
